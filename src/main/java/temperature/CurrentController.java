@@ -19,7 +19,9 @@ public class CurrentController {
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(p.getInputStream()));
             s = br.readLine();
-            temperature.setValue(s);
+            if (s != null) {
+                temperature.setValue(String.format("%.2f", Double.valueOf(s)));
+            }
             p.waitFor();
             p.destroy();
         } catch (Exception e) {
