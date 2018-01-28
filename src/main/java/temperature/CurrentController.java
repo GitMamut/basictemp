@@ -20,9 +20,7 @@ public class CurrentController {
                     new InputStreamReader(p.getInputStream()));
             s = br.readLine();
             temperature.setValue(s);
-            System.out.println("line: " + s);
             p.waitFor();
-            System.out.println("exit: " + p.exitValue());
             p.destroy();
         } catch (Exception e) {
             System.out.println(e);
