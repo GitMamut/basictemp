@@ -20,7 +20,7 @@ public class CurrentController {
                     new InputStreamReader(p.getInputStream()));
             s = br.readLine();
             if (s != null) {
-                temperature.setValue(String.format("%.2f", Double.valueOf(s)));
+                temperature.setValue(String.format("%.2f", Double.valueOf(s)/1000));
             }
             p.waitFor();
             p.destroy();
