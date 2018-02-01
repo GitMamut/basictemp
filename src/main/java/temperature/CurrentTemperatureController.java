@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import java.util.Date;
 
 @RestController
-public class CurrentController {
+public class CurrentTemperatureController {
 
     @RequestMapping("/currentTemperature")
     public Temperature currentTemperature() {
