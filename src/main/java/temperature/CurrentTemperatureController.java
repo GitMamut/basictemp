@@ -14,7 +14,7 @@ public class CurrentTemperatureController {
     public Temperature currentTemperature() {
         String s;
         Process p;
-        Temperature temperature = new Temperature(new Date(), "Could not acquire current temperature");
+        Temperature temperature = new Temperature(new Date(), "-999000");
 
         try {
             p = Runtime.getRuntime().exec("/home/pi/projects/temperature/read_temp.sh");
