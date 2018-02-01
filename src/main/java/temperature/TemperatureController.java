@@ -16,7 +16,7 @@ public class TemperatureController {
 
     @RequestMapping("/temperature")
     public List<Temperature> temperature(
-            @RequestParam(value = "limit", defaultValue = "128") String limit,
+            @RequestParam(value = "limit", defaultValue = "150") String limit,
             @RequestParam(value = "fromDate", required = false) String fromDate
     ) {
         List<Temperature> temperatureList = new ArrayList<>();
