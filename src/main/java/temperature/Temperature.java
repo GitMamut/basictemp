@@ -1,22 +1,30 @@
 package temperature;
 
 
-public class Temperature {
-    private String id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-    public Temperature(String date, String value) {
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+@Document(collection = "temp")
+public class Temperature {
+
+    public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
+
+    private java.util.Date date;
+
+    private String value;
+
+    public Temperature(Date date, String value) {
         this.date = date;
         this.value = value;
     }
 
-    private String date;
-    private String value;
-
     public String getDate() {
-        return date;
+        return sdf.format(date);
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

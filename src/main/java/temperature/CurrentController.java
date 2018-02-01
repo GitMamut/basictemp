@@ -5,14 +5,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Date;
 
 @RestController
 public class CurrentController {
+
     @RequestMapping("/currentTemp")
     public Temperature currentTemp() {
         String s;
         Process p;
-        Temperature temperature = new Temperature("now", "Could not acquire temperature");
+        Temperature temperature = new Temperature(new Date(), "Could not acquire temperature");
 
         try {
             p = Runtime.getRuntime().exec("/home/pi/projects/temperature/read_temp.sh");
@@ -20,7 +22,7 @@ public class CurrentController {
                     new InputStreamReader(p.getInputStream()));
             s = br.readLine();
             if (s != null) {
-                temperature.setValue(String.format("%.2f", Double.valueOf(s)/1000));
+                temperature.setValue(String.format("%.1f", Double.valueOf(s) / 1000));
             }
             p.waitFor();
             p.destroy();
