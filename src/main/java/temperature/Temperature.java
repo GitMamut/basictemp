@@ -29,7 +29,7 @@ public class Temperature {
     }
 
     public String getValue() {
-        return value;
+        return String.format("%.1f", Double.valueOf(value) / 1000);
     }
 
     public void setValue(String value) {
