@@ -10,11 +10,11 @@ import java.util.Date;
 @RestController
 public class CurrentController {
 
-    @RequestMapping("/currentTemp")
-    public Temperature currentTemp() {
+    @RequestMapping("/currentTemperature")
+    public Temperature currentTemperature() {
         String s;
         Process p;
-        Temperature temperature = new Temperature(new Date(), "Could not acquire temperature");
+        Temperature temperature = new Temperature(new Date(), "Could not acquire current temperature");
 
         try {
             p = Runtime.getRuntime().exec("/home/pi/projects/temperature/read_temp.sh");
@@ -31,6 +31,5 @@ public class CurrentController {
         }
 
         return temperature;
-
     }
 }
