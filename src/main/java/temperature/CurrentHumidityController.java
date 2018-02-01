@@ -5,13 +5,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 public class CurrentHumidityController {
 
     @RequestMapping("/currentHumidity")
-    public Humidity currentHumidity() {
+    public List<Humidity> currentHumidity() {
         String s;
         Process p;
         Humidity humidity = new Humidity(new Date(), "-999000");
@@ -30,6 +32,6 @@ public class CurrentHumidityController {
             System.out.println(e);
         }
 
-        return humidity;
+        return Collections.singletonList(humidity);
     }
 }

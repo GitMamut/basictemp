@@ -29,7 +29,7 @@ public class Humidity {
     }
 
     public String getValue() {
-        return String.format("%.1f", Double.valueOf(value) / 1000);
+        return value;
     }
 
     public void setValue(String value) {
