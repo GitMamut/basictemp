@@ -19,7 +19,7 @@ public class CurrentIndoorController {
         Indoor indoor = new Indoor(new Date(), "-999", "-999");
 
         try {
-            p = Runtime.getRuntime().exec("/home/pi/projects/indoor/read_humidity.sh");
+            p = Runtime.getRuntime().exec("/home/pi/projects/indoor/read_indoor.sh");
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(p.getInputStream()));
             s = br.readLine();
