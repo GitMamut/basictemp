@@ -10,13 +10,13 @@ import org.springframework.util.StringUtils;
 import java.text.ParseException;
 import java.util.List;
 
-public class TemperatureRepositoryImpl implements TemperatureRepositoryCustom {
+public class OutdoorRepositoryImpl implements OutdoorRepositoryCustom {
 
     @Autowired
     MongoTemplate mongoTemplate;
 
     @Override
-    public List<Temperature> find(String date, Integer limit) {
+    public List<Outdoor> find(String date, Integer limit) {
         Query query = new Query();
         query.with(new Sort(Sort.Direction.DESC, "date"));
 
@@ -26,12 +26,12 @@ public class TemperatureRepositoryImpl implements TemperatureRepositoryCustom {
 
         if (!StringUtils.isEmpty(date)) {
             try {
-                query.addCriteria(new Criteria().where("date").lte(Temperature.sdf.parse(date)));
+                query.addCriteria(new Criteria().where("date").lte(Outdoor.sdf.parse(date)));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
 
-        return mongoTemplate.find(query, Temperature.class);
+        return mongoTemplate.find(query, Outdoor.class);
     }
 }

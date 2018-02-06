@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Document(collection = "temp")
-public class Temperature {
+@Document(collection = "outdoor")
+public class Outdoor {
 
     public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
 
@@ -15,7 +15,7 @@ public class Temperature {
 
     private String value;
 
-    public Temperature(Date date, String value) {
+    public Outdoor(Date date, String value) {
         this.date = date;
         this.value = value;
     }

@@ -9,18 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class TemperatureController {
+public class OutdoorController {
 
     @Autowired
-    private TemperatureRepository repository;
+    private OutdoorRepository repository;
 
-    @RequestMapping("/temperature")
-    public List<Temperature> temperature(
+    @RequestMapping("/outdoor")
+    public List<Outdoor> outdoor(
             @RequestParam(value = "limit", defaultValue = "150") String limit,
             @RequestParam(value = "fromDate", required = false) String fromDate
     ) {
-        List<Temperature> temperatureList = new ArrayList<>();
-        temperatureList.addAll(repository.find(fromDate, Integer.valueOf(limit)));
-        return temperatureList;
+        List<Outdoor> outdoorList = new ArrayList<>();
+        outdoorList.addAll(repository.find(fromDate, Integer.valueOf(limit)));
+        return outdoorList;
     }
 }

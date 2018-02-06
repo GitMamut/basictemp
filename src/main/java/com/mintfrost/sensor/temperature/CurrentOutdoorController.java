@@ -10,13 +10,13 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-public class CurrentTemperatureController {
+public class CurrentOutdoorController {
 
-    @RequestMapping("/currentTemperature")
-    public List<Temperature> currentTemperature() {
+    @RequestMapping("/currentOutdoor")
+    public List<Outdoor> currentOutdoor() {
         String s;
         Process p;
-        Temperature temperature = new Temperature(new Date(), "-999000");
+        Outdoor outdoor = new Outdoor(new Date(), "-999000");
 
         try {
             p = Runtime.getRuntime().exec("/home/pi/projects/temperature/read_temp.sh");
@@ -24,7 +24,7 @@ public class CurrentTemperatureController {
                     new InputStreamReader(p.getInputStream()));
             s = br.readLine();
             if (s != null) {
-                temperature.setValue(s);
+                outdoor.setValue(s);
             }
             p.waitFor();
             p.destroy();
@@ -32,6 +32,6 @@ public class CurrentTemperatureController {
             System.out.println(e);
         }
 
-        return Collections.singletonList(temperature);
+        return Collections.singletonList(outdoor);
     }
 }

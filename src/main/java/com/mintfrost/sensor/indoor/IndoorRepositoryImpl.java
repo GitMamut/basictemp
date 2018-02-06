@@ -1,6 +1,6 @@
 package com.mintfrost.sensor.indoor;
 
-import com.mintfrost.sensor.temperature.Temperature;
+import com.mintfrost.sensor.temperature.Outdoor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -27,7 +27,7 @@ public class IndoorRepositoryImpl implements IndoorRepositoryCustom {
 
         if (!StringUtils.isEmpty(date)) {
             try {
-                query.addCriteria(new Criteria().where("date").lte(Temperature.sdf.parse(date)));
+                query.addCriteria(new Criteria().where("date").lte(Outdoor.sdf.parse(date)));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
