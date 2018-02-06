@@ -1,4 +1,4 @@
-package temperature;
+package com.mintfrost.sensor.indoor;
 
 
 import org.springframework.data.mongodb.core.mapping.Document;

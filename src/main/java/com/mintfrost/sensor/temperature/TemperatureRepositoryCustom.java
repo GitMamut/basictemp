@@ -1,4 +1,4 @@
-package temperature;
+package com.mintfrost.sensor.temperature;
 
 import java.util.List;
 

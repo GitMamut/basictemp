@@ -1,4 +1,4 @@
-package temperature;
+package com.mintfrost.sensor.temperature;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,25 +10,21 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-public class CurrentIndoorController {
+public class CurrentTemperatureController {
 
-    @RequestMapping("/currentIndoor")
-    public List<Indoor> currentIndoor() {
+    @RequestMapping("/currentTemperature")
+    public List<Temperature> currentTemperature() {
         String s;
         Process p;
-        Indoor indoor = new Indoor(new Date(), "-999", "-999");
+        Temperature temperature = new Temperature(new Date(), "-999000");
 
         try {
-            p = Runtime.getRuntime().exec("/home/pi/projects/indoor/read_indoor.sh");
+            p = Runtime.getRuntime().exec("/home/pi/projects/temperature/read_temp.sh");
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(p.getInputStream()));
             s = br.readLine();
             if (s != null) {
-                String[] tempHum = s.split(" ");
-                if (tempHum.length ==2) {
-                    indoor.setTempValue(tempHum[0]);
-                    indoor.setHumValue(tempHum[1]);
-                }
+                temperature.setValue(s);
             }
             p.waitFor();
             p.destroy();
@@ -36,6 +32,6 @@ public class CurrentIndoorController {
             System.out.println(e);
         }
 
-        return Collections.singletonList(indoor);
+        return Collections.singletonList(temperature);
     }
 }

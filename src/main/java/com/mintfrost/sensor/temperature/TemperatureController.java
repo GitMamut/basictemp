@@ -1,4 +1,4 @@
-package temperature;
+package com.mintfrost.sensor.temperature;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,18 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class IndoorController {
+public class TemperatureController {
 
     @Autowired
-    private IndoorRepository repository;
+    private TemperatureRepository repository;
 
-    @RequestMapping("/indoor")
-    public List<Indoor> indoor(
+    @RequestMapping("/temperature")
+    public List<Temperature> temperature(
             @RequestParam(value = "limit", defaultValue = "150") String limit,
             @RequestParam(value = "fromDate", required = false) String fromDate
     ) {
-        List<Indoor> indoorList = new ArrayList<>();
-        indoorList.addAll(repository.find(fromDate, Integer.valueOf(limit)));
-        return indoorList;
+        List<Temperature> temperatureList = new ArrayList<>();
+        temperatureList.addAll(repository.find(fromDate, Integer.valueOf(limit)));
+        return temperatureList;
     }
 }

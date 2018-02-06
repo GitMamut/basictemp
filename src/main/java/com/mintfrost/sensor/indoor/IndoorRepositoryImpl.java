@@ -1,5 +1,6 @@
-package temperature;
+package com.mintfrost.sensor.indoor;
 
+import com.mintfrost.sensor.temperature.Temperature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -10,13 +11,13 @@ import org.springframework.util.StringUtils;
 import java.text.ParseException;
 import java.util.List;
 
-public class TemperatureRepositoryImpl implements TemperatureRepositoryCustom {
+public class IndoorRepositoryImpl implements IndoorRepositoryCustom {
 
     @Autowired
     MongoTemplate mongoTemplate;
 
     @Override
-    public List<Temperature> find(String date, Integer limit) {
+    public List<Indoor> find(String date, Integer limit) {
         Query query = new Query();
         query.with(new Sort(Sort.Direction.DESC, "date"));
 
@@ -32,6 +33,6 @@ public class TemperatureRepositoryImpl implements TemperatureRepositoryCustom {
             }
         }
 
-        return mongoTemplate.find(query, Temperature.class);
+        return mongoTemplate.find(query, Indoor.class);
     }
 }
