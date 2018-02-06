@@ -24,10 +24,10 @@ public class CurrentIndoorController {
                     new InputStreamReader(p.getInputStream()));
             s = br.readLine();
             if (s != null) {
-                String[] humTemp = s.split(" ");
-                if (humTemp.length ==2) {
-                    indoor.setHumValue(humTemp[0]);
-                    indoor.setTempValue(humTemp[1]);
+                String[] tempHum = s.split(" ");
+                if (tempHum.length ==2) {
+                    indoor.setTempValue(tempHum[0]);
+                    indoor.setHumValue(tempHum[1]);
                 }
             }
             p.waitFor();
