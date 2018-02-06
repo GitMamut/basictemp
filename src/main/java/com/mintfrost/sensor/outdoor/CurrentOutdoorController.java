@@ -1,4 +1,4 @@
-package com.mintfrost.sensor.temperature;
+package com.mintfrost.sensor.outdoor;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +19,7 @@ public class CurrentOutdoorController {
         Outdoor outdoor = new Outdoor(new Date(), "-999000");
 
         try {
-            p = Runtime.getRuntime().exec("/home/pi/projects/temperature/read_temp.sh");
+            p = Runtime.getRuntime().exec("/home/pi/projects/outdoor/read_temp.sh");
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(p.getInputStream()));
             s = br.readLine();

@@ -1,4 +1,4 @@
-package com.mintfrost.sensor.temperature;
+package com.mintfrost.sensor.outdoor;
 
 import java.util.List;
 

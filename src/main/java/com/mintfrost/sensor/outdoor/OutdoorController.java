@@ -1,4 +1,4 @@
-package com.mintfrost.sensor.temperature;
+package com.mintfrost.sensor.outdoor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

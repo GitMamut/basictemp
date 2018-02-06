@@ -1,6 +1,6 @@
 package com.mintfrost.sensor.indoor;
 
-import com.mintfrost.sensor.temperature.Outdoor;
+import com.mintfrost.sensor.outdoor.Outdoor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
