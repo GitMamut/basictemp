@@ -10,21 +10,25 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-public class CurrentHumidityController {
+public class CurrentIndoorController {
 
-    @RequestMapping("/currentHumidity")
-    public List<Humidity> currentHumidity() {
+    @RequestMapping("/currentIndoor")
+    public List<Indoor> currentIndoor() {
         String s;
         Process p;
-        Humidity humidity = new Humidity(new Date(), "-999000");
+        Indoor indoor = new Indoor(new Date(), "-999", "-999");
 
         try {
-            p = Runtime.getRuntime().exec("/home/pi/projects/humidity/read_humidity.sh");
+            p = Runtime.getRuntime().exec("/home/pi/projects/indoor/read_humidity.sh");
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(p.getInputStream()));
             s = br.readLine();
             if (s != null) {
-                humidity.setValue(s);
+                String[] humTemp = s.split(" ");
+                if (humTemp.length ==2) {
+                    indoor.setHumValue(humTemp[0]);
+                    indoor.setTempValue(humTemp[1]);
+                }
             }
             p.waitFor();
             p.destroy();
@@ -32,6 +36,6 @@ public class CurrentHumidityController {
             System.out.println(e);
         }
 
-        return Collections.singletonList(humidity);
+        return Collections.singletonList(indoor);
     }
 }
