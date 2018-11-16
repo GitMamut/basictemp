@@ -10,6 +10,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import static com.mintfrost.sensor.CommonSensorResponse.*;
+import static java.lang.String.*;
+
 @RestController
 public class CurrentOutdoorController {
 
@@ -32,7 +35,10 @@ public class CurrentOutdoorController {
         CommonSensorResponse commonSensorResponse = new CommonSensorResponse("outdoor", new Date());
         OutdoorReading outdoorReading = getSensorReading();
         if (outdoorReading != null) {
-            commonSensorResponse.getValues().add(new CommonSensorResponse.CommonSensorValue("temperature", outdoorReading.getTemperature()));
+            commonSensorResponse.getValues().add(
+                    new CommonSensorValue(
+                            "temperature",
+                            format("%.1f", Double.valueOf(outdoorReading.getTemperature()) / 1000)));
         }
         return commonSensorResponse;
     }
