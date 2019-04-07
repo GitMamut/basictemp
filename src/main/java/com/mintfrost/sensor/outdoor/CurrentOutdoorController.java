@@ -1,6 +1,7 @@
 package com.mintfrost.sensor.outdoor;
 
 import com.mintfrost.sensor.CommonSensorResponse;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ import java.util.List;
 import static com.mintfrost.sensor.CommonSensorResponse.*;
 import static java.lang.String.*;
 
+@CrossOrigin
 @RestController
 public class CurrentOutdoorController {
 
